@@ -8,16 +8,18 @@ def signup(request):
         if request.POST['password1']==request.POST['password2']:
             try:
                 user=User.objects.get(username=request.POST['username'])
-                return render(request,'accounts/signup.html',{'error':'username is already exist'})
-            
+                return render(request,'accounts/signup.html',{'error':'username is already exist'})  
+
             except User.DoesNotExist:
                 user=User.objects.create_user(request.POST['username'],password=request.POST['password1'])
                 auth.login(request,user)
                 return redirect('home')
 
+        elif request.POST['password1']!=request.POST['password2']:
+            return render(request,'accounts/signup.html',{'error':'password does not match'})  
 
-
-    return render(request, 'accounts/signup.html')
+    else:
+        return render(request,'accounts/signup.html',{'error':'fields should not be empty'}) 
 
 def login(request):
     return render(request, 'accounts/login.html')
