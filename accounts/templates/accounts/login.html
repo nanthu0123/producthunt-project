@@ -2,6 +2,19 @@
 
 {%block content%}
 
-<h1>welocme to login</h1>
+<br>
+{%if error%}
+{{error}}<br><br>
+{%endif%}
+
+<h1>Login here</h1>
+<form method="POST" action="{% url 'login'%}">
+{% csrf_token %}
+Username:<br>
+<input type="text" name="username"><br><br>
+Password:<br>
+<input type="password" name="password"><br><br>
+<input type="submit" class="btn btn-primary" value="Login">
+</form>
 
 {% endblock %}
