@@ -8,11 +8,9 @@
         <img src="{{product.icon.url}}" class="img-fluid">
     </div>
     <div class="col-6" onclick="window.location='{%url 'detail' product.id %}';" style="cursor: pointer;">
-        <a></a><h2>{{product.title}}</h2>
-        <p>{{product.summary}}</p>
-    </div>
-    <div class="col-4">
-        
+        <a></a>
+        <h2>{{product.title}}</h2>
+        <p>{{product.summary}} (read more)</p>
     </div>
 </div>
 {%endfor%}
